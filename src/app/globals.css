@@ -2,26 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --green-0: #0d0d0d;
+	--green-1: #1d1d1d;
+	--green-2: #2f3538;
+	--green-3: #c5c5c5;
+	--green-4: #eee;
+	--green-5: #fff;
+	--dop-1: #e2f026;
+	--dop-2: #1aecdf;
+	--dop-3: #1dc4ee;
+	--dop-4: #1761da;
+	--dop-5: #6906dd;
+	--dop-6: #a203b0;
+	--dop-7: #ec33cc;
+  --font-family: "Montserrat", sans-serif;
+  --second-family: "Gotham Pro", sans-serif;
+  --third-family: "PT Sans", sans-serif;
+  --font3: "Plus Jakarta Display", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	transition: all 0.2s ease-in-out;
 }
 
+a {
+  text-decoration: none;
+	color: inherit;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+}
+
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family);
+  color: var(--green-5);
+  background: rgba(47, 53, 56, 0.8);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
 }

@@ -1,0 +1,142 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: --green-2;
+    opacity: 0.95;
+    color: --green-2;
+    position: relative;
+    width: 100%;
+    z-index: 5;
+  }
+  
+  .headerLogo {
+    width: 157px;
+    height: 70px;
+    padding-left: 15px;
+  }
+  
+  .headerNav {
+    width: 100%;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .headerNavItem {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+  }
+  
+  .headerNavItems {
+    position: relative;
+  }
+  
+  .headerNavItems a {
+    color: --green-2;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .headerNavItems a:hover {
+    color: --dop-2;
+  }
+  
+  .headerSearchBox {
+    background: --green-1;
+    border-radius: 25px;
+    margin-right: 20px;
+    display: flex;
+  }
+  
+  .headerSearchBox.expanded .headerSearchInput {
+    width: 30vw;
+    padding: 0 6px;
+  }
+  
+  .headerSearchButton {
+    border: none;
+    color: --green-2;
+    border-radius: 50%;
+    background: --green-1;
+    height: 40px;
+    width: 40px;
+    transition: 0.4s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .headerSearchInput {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: --green-2;
+    font-size: 14px;
+    font-weight: 300;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+  }
+  
+  .headerSearchImg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .submenu {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(47, 53, 56);
+    opacity: 0.95;
+    z-index: 4;
+    padding: 10px 0;
+    display: block;
+  }
+  
+  .submenuDropdownContent {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 20px;
+    max-width: 1196px;
+    margin: 0 auto;
+    border-top: --dop-2 solid 1px;
+  }
+  
+  .submenuDropdownColumn {
+    padding: 0 20px;
+  }
+  
+  .submenuDropdownColumn a {
+    display: block;
+    color: --green-5;
+    padding: 10px 0;
+  }
+  
+  .submenuDropdownLinkBold {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .submenuDropdownSubmenu a:hover {
+    color: --dop-2;
+  }
+  
+  .submenuDropdownSubmenu {
+    margin-top: 8px;
+}
+
+.submenuDropdownLink {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.submenuDropdownLink:hover {
+  border-bottom: --dop-2 solid 1px;
+}
