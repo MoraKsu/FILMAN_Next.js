@@ -1,8 +1,11 @@
 "use client";
 
-import { useMemo, useState, FC } from 'react';
+import { useMemo, useState, FC, FormEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchMovies, searchMoviesByTitle } from '../../lib/features/API/kinopoisk/kinopoiskSlice';
+import { RootState, AppDispatch } from '../../lib/store';
 import styles from './Header.module.scss';
 import Submenu from './Submenu';
 
@@ -11,6 +14,9 @@ const Header: FC = () => {
   const [submenuContent, setSubmenuContent] = useState<{ title: string; links: string[] }[]>([]);
   const [isSubmenuVisible, setIsSubmenuVisible] = useState(false);
 
+  const dispatch: AppDispatch = useDispatch();
+
+  // Данные для меню
   const submenuData = useMemo(
     () => ({
       all: [
@@ -52,10 +58,23 @@ const Header: FC = () => {
     }, 300);
   };
 
-  const handleSearchSubmit = (event: React.FormEvent) => {
+  // Функция для обработки поиска
+  const handleSearchSubmit = (event: FormEvent) => {
     event.preventDefault();
-    // Add search logic here
+    if (searchQuery.trim()) {
+      const searchParams = {
+        query: searchQuery,
+        selectFields: ['name', 'rating.kp', 'poster.previewUrl', 'year', 'genres', 'countries'],
+        notNullFields: ['rating.kp', 'poster.previewUrl'],
+      };
+      // Вызов Redux thunks для поиска
+      dispatch(searchMovies(searchParams));
+      dispatch(searchMoviesByTitle(searchQuery));
+    }
   };
+
+  // Получение данных из Redux (например, результаты поиска)
+  const searchResults = useSelector((state: RootState) => state.kinopoisk.searchResults);
 
   return (
     <header className={styles.header}>
@@ -99,6 +118,17 @@ const Header: FC = () => {
         </form>
       </nav>
       {isSubmenuVisible && <Submenu submenuContent={submenuContent} />}
+      {/* Вывод результатов поиска */}
+      {searchResults.length > 0 && (
+        <div className={styles.searchResults}>
+          {searchResults.map((movie, index) => (
+            <div key={index}>
+              <p>{movie.name}</p>
+              <Image src={movie.poster.previewUrl} alt={movie.name} width={100} height={150} />
+            </div>
+          ))}
+        </div>
+      )}
     </header>
   );
 };

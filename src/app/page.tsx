@@ -1,5 +1,7 @@
-import Home from '../pages/Home';
+import Header from "../components/Header/Header";
 
-export default function Page() {
-  return <Home />;
+export default function HomePage() {
+  return (
+    <Header />
+  );
 }
